@@ -283,7 +283,7 @@ const handleInputChange = (e: InputChangeEvent): void => {
     }
 };
 
-interface FileChangeEvent extends React.ChangeEvent<HTMLInputElement> {}
+interface FileChangeEvent extends React.ChangeEvent<HTMLInputElement> {customField?: string;}
 
 interface HandleFileChange {
     (e: FileChangeEvent, fieldName: 'idFrontFile' | 'idBackFile'): void;
@@ -312,7 +312,7 @@ const handleFileChange: HandleFileChange = (e, fieldName) => {
     return Object.keys(newErrors).length === 0;
   };
 
-interface HandleSubmitEvent extends React.MouseEvent<HTMLButtonElement, MouseEvent> {}
+interface HandleSubmitEvent extends React.MouseEvent<HTMLButtonElement, MouseEvent> {customField?: string;}
 
 interface SubmitFormData {
     idType: string;
