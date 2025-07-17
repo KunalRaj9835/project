@@ -260,7 +260,9 @@ const IdVerification: React.FC<IdVerificationProps> = ({ onSubmit, initialData =
   const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-interface InputChangeEvent extends React.ChangeEvent<HTMLInputElement | HTMLSelectElement> {}
+interface InputChangeEvent extends React.ChangeEvent<HTMLInputElement | HTMLSelectElement> {
+  customField?: string;
+}
 
 interface FormData {
     idType: string;
