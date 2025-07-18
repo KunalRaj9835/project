@@ -2,29 +2,29 @@
 
 import React, { useState } from 'react';
 import { Upload, MapPin, CheckCircle } from 'lucide-react';
+import './AddressVerification.css';
 
 const ProgressBar = ({ currentStep = 2, totalSteps = 2 }) => {
   return (
-    <div className="flex  items-center justify-center mb-8 pt-8">
-  <div className="flex items-center space-x-4">
-    {/* Step 1 */}
-    <div className="flex flex-col items-center">
-      <div className={`w-24 h-1 rounded-full ${currentStep >= 1 ? 'bg-yellow-400' : 'bg-gray-300'}`}></div>
-      <span className={`mt-2 text-sm font-medium ${currentStep >= 1 ? 'text-gray-900' : 'text-gray-500'}`}>
-        ID Proof
-      </span>
-    </div>
+    <div className="progressContainer">
+      <div className="progressWrapper">
+        {/* Step 1 */}
+        <div className="progressStep">
+          <div className={`progressBar ${currentStep >= 1 ? 'progressBarActive' : 'progressBarInactive'}`}></div>
+          <span className={`progressLabel ${currentStep >= 1 ? 'progressLabelActive' : 'progressLabelInactive'}`}>
+            ID Proof
+          </span>
+        </div>
 
-    {/* Step 2 */}
-    <div className="flex flex-col items-center">
-      <div className={`w-24 h-1 rounded-full ${currentStep >= 2 ? 'bg-yellow-400' : 'bg-gray-300'}`}></div>
-      <span className={`mt-2 text-sm font-medium ${currentStep >= 2 ? 'text-gray-900' : 'text-gray-500'}`}>
-        Address Proof
-      </span>
+        {/* Step 2 */}
+        <div className="progressStep">
+          <div className={`progressBar ${currentStep >= 2 ? 'progressBarActive' : 'progressBarInactive'}`}></div>
+          <span className={`progressLabel ${currentStep >= 2 ? 'progressLabelActive' : 'progressLabelInactive'}`}>
+            Address Proof
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 };
 
@@ -168,15 +168,15 @@ const AddressVerification: React.FC<AddressVerificationProps> = ({
     };
 
     return (
-      <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <div className="fileUploadContainer">
+        <label className="inputLabel">{label}</label>
         <div 
-          className={`border-2 border-dashed bg-white rounded-lg p-6 text-center transition-all duration-200 cursor-pointer ${
+          className={`fileUploadArea ${
             isDragOver 
-              ? 'border-blue-500 bg-blue-50' 
+              ? 'fileUploadAreaDragOver' 
               : error 
-                ? 'border-red-300 hover:border-red-400' 
-                : 'border-gray-300 hover:border-gray-400'
+                ? 'fileUploadAreaError' 
+                : ''
           }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
@@ -187,79 +187,75 @@ const AddressVerification: React.FC<AddressVerificationProps> = ({
             name={name}
             accept="image/*,application/pdf"
             onChange={onChange}
-            className="hidden"
+            className="fileUploadInput"
             id={name}
           />
-          <label htmlFor={name} className="cursor-pointer block">
-            <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-            <div className="space-y-1">
-              <p className="text-sm font-medium text-gray-900">
+          <label htmlFor={name} className="fileUploadLabel">
+            <Upload className="fileUploadIcon" />
+            <div className="fileUploadContent">
+              <p className="fileUploadMainText">
                 {file ? file.name : 'Browse Files'}
               </p>
-              <p className="text-xs text-gray-500">Drag and drop files here</p>
+              <p className="fileUploadSubText">Drag and drop files here</p>
             </div>
           </label>
         </div>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {error && <p className="errorMessage">{error}</p>}
       </div>
     );
   };
 
   return (
-    <div className="min-h-screen bg-[#f1f1f1] py-8">
-      <div className="max-w-2xl mx-auto px-4">
+    <div className="pageContainer">
+      <div className="contentWrapper">
         {/* Progress Bar */}
         <ProgressBar currentStep={2} totalSteps={2} />
 
         {/* Form Card */}
-        <div className="bg-[#f1f1f1] rounded-xl  overflow-hidden">
-          <div className="p-8">
-            <div className="mb-8 text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Upload your Address Proof</h2>
-              <p className="text-gray-600">Passports and driving licenses are accepted</p>
+        <div className="formCard">
+          <div className="formContent">
+            <div className="headerContainer">
+              <h2 className="headerTitle">Upload your Address Proof</h2>
+              <p className="headerSubtitle">Passports and driving licenses are accepted</p>
             </div>
 
-            <div className="space-y-6">
+            <div className="spacingContainer">
               {/* Address Type and Issue Date */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="formGrid">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Address Type</label>
+                  <label className="inputLabel">Address Type</label>
                   <select
                     name="addressType"
                     value={formData.addressType}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white ${
-                      errors.addressType ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={`selectInput ${errors.addressType ? 'selectInputError' : ''}`}
                   >
                     <option value="">Select Address Type</option>
                     {addressTypes.map(type => (
                       <option key={type.value} value={type.value}>{type.label}</option>
                     ))}
                   </select>
-                  {errors.addressType && <p className="text-red-500 text-sm mt-1">{errors.addressType}</p>}
+                  {errors.addressType && <p className="errorMessage">{errors.addressType}</p>}
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Issue Date</label>
+                  <label className="inputLabel">Issue Date</label>
                   <input
                     type="date"
                     name="addressIssueDate"
                     value={formData.addressIssueDate}
                     onChange={handleInputChange}
                     placeholder="dd-----yyyy"
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white ${
-                      errors.addressIssueDate ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={`dateInput ${errors.addressIssueDate ? 'dateInputError' : ''}`}
                   />
-                  {errors.addressIssueDate && <p className="text-red-500 text-sm mt-1">{errors.addressIssueDate}</p>}
+                  {errors.addressIssueDate && <p className="errorMessage">{errors.addressIssueDate}</p>}
                 </div>
               </div>
 
               {/* Proof of Address Section */}
               <div>
-                <h3 className="text-lg  font-medium text-gray-900 mb-4">Proof Of address</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h3 className="sectionTitle">Proof Of address</h3>
+                <div className="formGrid">
                   <FileUpload
                     name="addressFrontFile"
                     label="ID Front"
@@ -279,20 +275,20 @@ const AddressVerification: React.FC<AddressVerificationProps> = ({
               </div>
 
               {/* Note */}
-              <div className="text-center">
-                <p className="text-sm text-gray-600 italic">
+              <div className="noteContainer">
+                <p className="noteText">
                   Please note that the documents should not be older then 75 days
                 </p>
               </div>
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-center mt-8">
+            <div className="buttonContainer">
               <button
                 type="button"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="px-20 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                className="submitButton"
               >
                 {isSubmitting ? 'Processing...' : 'Continue'}
               </button>

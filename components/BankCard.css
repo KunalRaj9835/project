@@ -1,0 +1,119 @@
+/* BankCard.css */
+
+/* Add Card Container */
+.addCardContainer {
+  width: 16rem; /* w-64 */
+  height: 10rem; /* h-40 */
+  background-color: white; /* bg-white */
+  border: 2px dashed #d1d5db; /* border-2 border-dashed border-gray-300 */
+  border-radius: 1rem; /* rounded-2xl */
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  align-items: center; /* items-center */
+  justify-content: center; /* justify-center */
+  cursor: pointer; /* cursor-pointer */
+  transition: color 0.15s ease-in-out; /* transition-colors */
+}
+
+.addCardContainer:hover {
+  border-color: #9ca3af; /* hover:border-gray-400 */
+}
+
+.addCardIconContainer {
+  width: 3rem; /* w-12 */
+  height: 3rem; /* h-12 */
+  background-color: #f3f4f6; /* bg-gray-100 */
+  border-radius: 50%; /* rounded-full */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  justify-content: center; /* justify-center */
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.addCardIcon {
+  width: 1.5rem; /* w-6 */
+  height: 1.5rem; /* h-6 */
+  color: #4b5563; /* text-gray-600 */
+}
+
+.addCardText {
+  font-size: 0.875rem; /* text-sm */
+  color: #4b5563; /* text-gray-600 */
+  text-align: center; /* text-center */
+}
+
+/* Card Container Base */
+.cardContainer {
+  width: 16rem; /* w-64 */
+  height: 10rem; /* h-40 */
+  border-radius: 1rem; /* rounded-2xl */
+  padding: 1.5rem; /* p-6 */
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  justify-content: space-between; /* justify-between */
+  position: relative; /* relative */
+  overflow: hidden; /* overflow-hidden */
+}
+
+/* Card Background Colors */
+.mainCard {
+  background-color: #f5f83e; /* bg-[#f5f83e] */
+}
+
+.salaryCard {
+  background-color: #595959; /* bg-[#595959] */
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex; /* flex */
+  justify-content: space-between; /* justify-between */
+  align-items: flex-start; /* items-start */
+}
+
+/* Virtual Label */
+.virtualLabel {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  opacity: 0.8; /* opacity-80 */
+}
+
+/* Card Type Label */
+.cardTypeLabel {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 700; /* font-bold */
+}
+
+/* Main Label */
+.mainLabel {
+  font-size: 0.875rem; /* text-sm */
+}
+
+/* Logo Container */
+.logoContainer {
+  position: absolute; /* absolute */
+  top: 50%; /* top-1/2 */
+  left: 50%; /* left-1/2 */
+  transform: translate(-50%, -50%); /* transform -translate-x-1/2 -translate-y-1/2 */
+}
+
+/* Logo Text */
+.logoText {
+  font-size: 0.875rem; /* text-sm */
+  opacity: 0.6; /* opacity-60 */
+}
+
+/* Card Number */
+.cardNumber {
+  font-size: 1.125rem; /* text-lg */
+  font-family: monospace; /* font-mono */
+}
+
+/* Text Colors */
+.mainCardText {
+  color: black; /* text-black */
+}
+
+.salaryCardText {
+  color: white; /* text-white */
+}

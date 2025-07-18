@@ -1,0 +1,249 @@
+/* Page Layout */
+.pageContainer {
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  padding: 2rem 0;
+}
+
+.contentContainer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.headerContainer {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Progress Bar */
+.progressContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progressBar {
+  width: 6rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+}
+
+.progressBarActive {
+  background-color: #fbbf24;
+}
+
+.progressBarInactive {
+  background-color: #d1d5db;
+}
+
+.stepLabel {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.stepLabelActive {
+  color: #111827;
+}
+
+.stepLabelInactive {
+  color: #6b7280;
+}
+
+/* Form Card */
+.formCard {
+  background-color: #f1f1f1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.formContent {
+  padding: 2rem;
+}
+
+.formHeader {
+  margin-bottom: 2rem;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.formSubtitle {
+  color: #4b5563;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Form Fields */
+.formFieldsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.selectField,
+.inputField {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.selectField:focus,
+.inputField:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.fieldNormal {
+  border-color: #d1d5db;
+}
+
+.fieldError {
+  border-color: #ef4444;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* File Upload */
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.uploadArea {
+  border: 2px dashed;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: white;
+}
+
+.uploadAreaNormal {
+  border-color: #d1d5db;
+}
+
+.uploadAreaNormal:hover {
+  border-color: #60a5fa;
+}
+
+.uploadAreaDragOver {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.uploadAreaError {
+  border-color: #fca5a5;
+}
+
+.uploadAreaError:hover {
+  border-color: #f87171;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.uploadLabel {
+  cursor: pointer;
+  display: block;
+}
+
+.uploadIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #9ca3af;
+  margin: 0 auto 0.75rem;
+}
+
+.uploadTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.uploadMainText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.uploadSubText {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Submit Button */
+.submitButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.submitButton {
+  padding: 1rem 5rem;
+  background-color: #000000;
+  color: white;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 1.125rem;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #000000;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

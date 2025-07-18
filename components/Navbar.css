@@ -1,0 +1,106 @@
+/* Navbar Component Styles */
+
+.navbarContainer {
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+}
+
+.navbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageNameContainer {
+  flex-shrink: 0;
+  margin-left: 15rem;
+}
+
+.pageNameText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #111827;
+  margin: 0;
+}
+
+.navbarActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.searchContainer {
+  position: relative;
+}
+
+.searchInput {
+  width: 16rem;
+  padding: 0.5rem 1rem;
+  background-color: #efefef;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+}
+
+.searchInput::placeholder {
+  color: #6b7280;
+}
+
+.historyButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #efefef;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.historyButton:hover {
+  background-color: #d1d5db;
+}
+
+.historyIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #4b5563;
+}
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: #efefef;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.profileButton:hover {
+  background-color: #d1d5db;
+}
+
+.profileAvatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: #374151;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.profileLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}

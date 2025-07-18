@@ -1,6 +1,7 @@
 // components/BankCard.tsx
 import React from 'react';
 import { Plus } from 'lucide-react';
+import './BankCard.css';
 
 interface BankCardProps {
   type: 'main' | 'salary' | 'add';
@@ -10,11 +11,11 @@ interface BankCardProps {
 const BankCard: React.FC<BankCardProps> = ({ type, cardNumber }) => {
   if (type === 'add') {
     return (
-      <div className="w-64 h-40 bg-white border-2 border-dashed border-gray-300 rounded-2xl flex flex-col items-center justify-center cursor-pointer hover:border-gray-400 transition-colors">
-        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-3">
-          <Plus className="w-6 h-6 text-gray-600" />
+      <div className="addCardContainer">
+        <div className="addCardIconContainer">
+          <Plus className="addCardIcon" />
         </div>
-        <div className="text-sm text-gray-600 text-center">
+        <div className="addCardText">
           View & Manage<br />cards
         </div>
       </div>
@@ -22,26 +23,26 @@ const BankCard: React.FC<BankCardProps> = ({ type, cardNumber }) => {
   }
 
   const isMain = type === 'main';
-  const bgColor = isMain ? 'bg-[#f5f83e]' : 'bg-[#595959]';
-  const textColor = isMain ? 'text-black' : 'text-white';
+  const cardClass = isMain ? 'mainCard' : 'salaryCard';
+  const textClass = isMain ? 'mainCardText' : 'salaryCardText';
 
   return (
-    <div className={`w-64 h-40 ${bgColor} rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden`}>
-      <div className="flex justify-between items-start">
+    <div className={`cardContainer ${cardClass}`}>
+      <div className="cardHeader">
         <div>
-          <div className={`text-sm font-medium ${textColor} opacity-80`}>VIRTUAL</div>
-          <div className={`text-lg font-bold ${textColor}`}>{isMain ? 'PLATINUM' : 'SALARY'}</div>
+          <div className={`virtualLabel ${textClass}`}>VIRTUAL</div>
+          <div className={`cardTypeLabel ${textClass}`}>{isMain ? 'PLATINUM' : 'SALARY'}</div>
         </div>
-        <div className={`text-sm ${textColor}`}>{isMain ? 'Main' : ''}</div>
+        <div className={`mainLabel ${textClass}`}>{isMain ? 'Main' : ''}</div>
       </div>
 
       {!isMain && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className={`text-sm ${textColor} opacity-60`}>LOGO</div>
+        <div className="logoContainer">
+          <div className={`logoText ${textClass}`}>LOGO</div>
         </div>
       )}
 
-      <div className={`text-lg font-mono ${textColor}`}>
+      <div className={`cardNumber ${textClass}`}>
         {cardNumber || '•••• •••• •••• ••••'}
       </div>
     </div>

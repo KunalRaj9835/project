@@ -2,30 +2,30 @@
 
 import React, { useState } from 'react';
 import { Upload, FileText, Calendar } from 'lucide-react';
+import './IdVerification.css';
 
 // Progress Bar Component
 const ProgressBar = ({ currentStep = 1, totalSteps = 2 }) => {
   return (
-    <div className="flex  items-center justify-center mb-8">
-  <div className="flex items-center space-x-4">
-    {/* Step 1 */}
-    <div className="flex flex-col items-center">
-      <div className={`w-24 h-1 rounded-full ${currentStep >= 1 ? 'bg-yellow-400' : 'bg-gray-300'}`}></div>
-      <span className={`mt-2 text-sm font-medium ${currentStep >= 1 ? 'text-gray-900' : 'text-gray-500'}`}>
-        ID Proof
-      </span>
-    </div>
+    <div className="progressContainer">
+      <div className="progressWrapper">
+        {/* Step 1 */}
+        <div className="stepContainer">
+          <div className={`progressBar ${currentStep >= 1 ? 'progressBarActive' : 'progressBarInactive'}`}></div>
+          <span className={`stepLabel ${currentStep >= 1 ? 'stepLabelActive' : 'stepLabelInactive'}`}>
+            ID Proof
+          </span>
+        </div>
 
-    {/* Step 2 */}
-    <div className="flex flex-col items-center">
-      <div className={`w-24 h-1 rounded-full ${currentStep >= 2 ? 'bg-yellow-400' : 'bg-gray-300'}`}></div>
-      <span className={`mt-2 text-sm font-medium ${currentStep >= 2 ? 'text-gray-900' : 'text-gray-500'}`}>
-        Address Proof
-      </span>
+        {/* Step 2 */}
+        <div className="stepContainer">
+          <div className={`progressBar ${currentStep >= 2 ? 'progressBarActive' : 'progressBarInactive'}`}></div>
+          <span className={`stepLabel ${currentStep >= 2 ? 'stepLabelActive' : 'stepLabelInactive'}`}>
+            Address Proof
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 };
 
@@ -55,70 +55,62 @@ const IDForm: React.FC<IDFormProps> = ({ formData, onInputChange, errors }) => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="formFieldsContainer">
       {/* ID Type */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">ID Type</label>
+        <label className="fieldLabel">ID Type</label>
         <select
           name="idType"
           value={formData.idType}
           onChange={onInputChange}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white ${
-            errors.idType ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className={`selectField ${errors.idType ? 'fieldError' : 'fieldNormal'}`}
         >
           <option value="">Select ID Type</option>
           {idTypes.map(type => (
             <option key={type.value} value={type.value}>{type.label}</option>
           ))}
         </select>
-        {errors.idType && <p className="text-red-500 text-sm mt-1">{errors.idType}</p>}
+        {errors.idType && <p className="errorText">{errors.idType}</p>}
       </div>
 
       {/* ID Number */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">ID Number</label>
+        <label className="fieldLabel">ID Number</label>
         <input
           type="text"
           name="idNumber"
           value={formData.idNumber}
           onChange={onInputChange}
-          className={`w-full px-4 py-3 border bg-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-            errors.idNumber ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className={`inputField ${errors.idNumber ? 'fieldError' : 'fieldNormal'}`}
           placeholder="Enter ID Number"
         />
-        {errors.idNumber && <p className="text-red-500 text-sm mt-1">{errors.idNumber}</p>}
+        {errors.idNumber && <p className="errorText">{errors.idNumber}</p>}
       </div>
 
       {/* Issue Date */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Issue Date</label>
+        <label className="fieldLabel">Issue Date</label>
         <input
           type="date"
           name="issueDate"
           value={formData.issueDate}
           onChange={onInputChange}
-          className={`w-full px-4 py-3 border bg-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-            errors.issueDate ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className={`inputField ${errors.issueDate ? 'fieldError' : 'fieldNormal'}`}
         />
-        {errors.issueDate && <p className="text-red-500 text-sm mt-1">{errors.issueDate}</p>}
+        {errors.issueDate && <p className="errorText">{errors.issueDate}</p>}
       </div>
 
       {/* Expiry Date */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
+        <label className="fieldLabel">Expiry Date</label>
         <input
           type="date"
           name="expiryDate"
           value={formData.expiryDate}
           onChange={onInputChange}
-          className={`w-full px-4 py-3 border bg-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-            errors.expiryDate ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className={`inputField ${errors.expiryDate ? 'fieldError' : 'fieldNormal'}`}
         />
-        {errors.expiryDate && <p className="text-red-500 text-sm mt-1">{errors.expiryDate}</p>}
+        {errors.expiryDate && <p className="errorText">{errors.expiryDate}</p>}
       </div>
     </div>
   );
@@ -180,17 +172,17 @@ const handleDragLeave = (e: React.DragEvent<HTMLDivElement>): void => {
     }
   };
 
+  const getUploadAreaClasses = () => {
+    if (isDragOver) return 'uploadArea uploadAreaDragOver';
+    if (error) return 'uploadArea uploadAreaError';
+    return 'uploadArea uploadAreaNormal';
+  };
+
   return (
-    <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <div className="uploadContainer">
+      <label className="fieldLabel">{label}</label>
       <div 
-        className={`border-2 border-dashed bg-white rounded-lg p-8 text-center transition-all duration-200 cursor-pointer ${
-          isDragOver 
-            ? 'border-blue-500 bg-blue-50' 
-            : error 
-              ? 'border-red-300 hover:border-red-400' 
-              : 'border-gray-300 hover:border-blue-400'
-        }`}
+        className={getUploadAreaClasses()}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
@@ -200,20 +192,20 @@ const handleDragLeave = (e: React.DragEvent<HTMLDivElement>): void => {
           name={name}
           accept="image/*,application/pdf"
           onChange={onChange}
-          className="hidden"
+          className="hiddenInput"
           id={name}
         />
-        <label htmlFor={name} className="cursor-pointer block">
-          <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-          <div className="space-y-1">
-            <p className="text-sm font-medium text-gray-900">
+        <label htmlFor={name} className="uploadLabel">
+          <Upload className="uploadIcon" />
+          <div className="uploadTextContainer">
+            <p className="uploadMainText">
               {file ? file.name : 'Browse Files'}
             </p>
-            <p className="text-xs text-gray-500">Drag and drop files here</p>
+            <p className="uploadSubText">Drag and drop files here</p>
           </div>
         </label>
       </div>
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="errorText">{error}</p>}
     </div>
   );
 };
@@ -349,10 +341,10 @@ const handleSubmit = async (e: HandleSubmitEvent): Promise<void> => {
 };
 
   return (
-    <div className="min-h-screen bg-[#f1f1f1] py-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="pageContainer">
+      <div className="contentContainer">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="headerContainer">
 
         </div>
 
@@ -360,17 +352,17 @@ const handleSubmit = async (e: HandleSubmitEvent): Promise<void> => {
         <ProgressBar currentStep={1} totalSteps={2} />
 
         {/* Form Card */}
-        <div className="bg-[#f1f1f1] rounded-xl  overflow-hidden">
-          <div className="p-8">
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Upload your Identity Proof</h2>
-              <p className="text-gray-600">Passports and driving licenses are accepted</p>
+        <div className="formCard">
+          <div className="formContent">
+            <div className="formHeader">
+              <h2 className="formTitle">Upload your Identity Proof</h2>
+              <p className="formSubtitle">Passports and driving licenses are accepted</p>
             </div>
 
             <div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="formGrid">
                 {/* Left Column - Form Fields */}
-                <div className="space-y-6">
+                <div className="formFieldsContainer">
                   <IDForm 
                     formData={formData}
                     onInputChange={handleInputChange}
@@ -379,7 +371,7 @@ const handleSubmit = async (e: HandleSubmitEvent): Promise<void> => {
                 </div>
 
                 {/* Right Column - File Uploads */}
-                <div className="space-y-6">
+                <div className="formFieldsContainer">
                   <FileUpload
                     name="idFrontFile"
                     label="ID Front"
@@ -399,12 +391,12 @@ const handleSubmit = async (e: HandleSubmitEvent): Promise<void> => {
               </div>
 
               {/* Submit Button */}
-              <div className="flex justify-center mt-12">
+              <div className="submitButtonContainer">
                 <button
                   type="button"
                   disabled={isSubmitting}
                   onClick={handleSubmit}
-                  className="px-20 py-4 bg-black text-white rounded-full font-medium hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                  className="submitButton"
                 >
                   {isSubmitting ? 'Processing...' : 'Continue '}
                 </button>

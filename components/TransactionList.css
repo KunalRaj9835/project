@@ -1,0 +1,172 @@
+/* TransactionList Component Styles */
+
+.transactionContainer {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #f3f4f6;
+}
+
+.transactionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.balanceSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.balanceAmount {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.chevronIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #4b5563;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actionButton {
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  color: #374151;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actionButton:hover {
+  background-color: #e5e7eb;
+}
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.cardInfo {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.transactionTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tableHeaderCell {
+  text-align: left;
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.tableHeaderCellRight {
+  text-align: right;
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.tableRow {
+  border-bottom: 1px solid #f9fafb;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.tableRow:hover {
+  background-color: #f3f4f6;
+}
+
+.tableRowEven {
+  background-color: #f9f9f9;
+}
+
+.tableRowOdd {
+  background-color: #ffffff;
+}
+
+.tableCell {
+  padding: 1rem 0;
+  vertical-align: middle;
+}
+
+.tableCellSecondary {
+  color: #4b5563;
+}
+
+.tableCellRight {
+  text-align: right;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.transactionInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.merchantIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconStar {
+  color: #ffffff;
+  font-size: 0.75rem;
+}
+
+.merchantName {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.seeAllSection {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.seeAllButton {
+  color: #6b7280;
+  font-size: 0.875rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.seeAllButton:hover {
+  color: #374151;
+}
